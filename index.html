@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>科举仕途测试</title>
+<meta property="og:title" content="科举仕途 · 从寒门书生到天子门生，49幕13结局">
+<style>
+:root{--bg:#16181a;--paper:#21242a;--ink:#E9E3D5;--brand:#B23A2E;--gold:#C8A96A;--line:#34383d;--muted:#8A8F88;}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:"Songti SC","SimSun","Noto Serif SC","Source Han Serif SC",serif;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:520px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;padding:0 18px;}
+.top{display:flex;justify-content:space-between;align-items:center;padding:16px 0 10px;position:sticky;top:0;background:var(--bg);z-index:5;border-bottom:1px solid var(--line);}
+.brand{display:flex;align-items:center;gap:9px;}
+.sealbox{width:30px;height:30px;border:1.5px solid var(--brand);color:var(--brand);display:flex;align-items:center;justify-content:center;font-size:15px;border-radius:3px;font-weight:700;}
+.name{font-size:16px;letter-spacing:3px;}
+.meta{font-size:12px;color:var(--muted);}
+.ep{letter-spacing:1px;}
+.hr{height:0;}
+.prog{position:sticky;top:53px;background:var(--bg);padding:8px 0 6px;z-index:4;}
+.bar{height:3px;background:var(--line);border-radius:2px;overflow:hidden;}
+.bar i{display:block;height:100%;background:var(--gold);width:0;transition:width .3s;}
+.dots{display:flex;gap:5px;justify-content:center;margin-top:6px;}
+.dots i{width:6px;height:6px;border-radius:50%;background:var(--line);}
+.dots i.on{background:var(--gold);}
+.cover,.chapter,.end{display:flex;flex-direction:column;justify-content:center;flex:1;padding:30px 0;}
+.cover{text-align:center;position:relative;overflow:hidden;}
+.wm{position:absolute;font-size:160px;color:rgba(178,58,46,.07);top:50%;left:50%;transform:translate(-50%,-50%);font-weight:700;pointer-events:none;letter-spacing:0;}
+.seal{display:inline-block;border:1px solid var(--brand);color:var(--brand);font-size:12px;letter-spacing:4px;padding:4px 10px;border-radius:2px;margin-bottom:18px;}
+.cover h1{font-size:34px;letter-spacing:8px;margin:6px 0 18px;font-weight:700;}
+.lead{font-size:14px;line-height:2;color:var(--ink);margin-bottom:20px;}
+.rulebox{font-size:12.5px;line-height:1.9;background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--brand);border-radius:2px;padding:14px;text-align:left;color:#cfc8b8;}
+.rulebox b{color:var(--gold);}
+.start{margin-top:22px;width:100%;border:1px solid var(--gold);background:transparent;color:var(--gold);border-radius:2px;padding:13px;font-size:15px;letter-spacing:6px;cursor:pointer;}
+.start:active{background:#2a2620;}
+.chapter{text-align:center;}
+.frame{border:1px solid var(--line);border-radius:2px;padding:26px 20px;background:var(--paper);}
+.vol{font-size:13px;color:var(--brand);letter-spacing:6px;margin-bottom:10px;}
+.chapter h2{font-size:24px;letter-spacing:6px;margin:0 0 14px;font-weight:700;}
+.ci{font-size:13.5px;line-height:1.95;color:#cfc8b8;text-align:left;}
+.go{margin-top:22px;width:100%;border:1px solid var(--gold);background:transparent;color:var(--gold);border-radius:2px;padding:12px;font-size:14px;letter-spacing:4px;cursor:pointer;}
+.go:active{background:#2a2620;}
+.card{border:1px solid var(--line);border-radius:2px;background:var(--paper);padding:18px;margin-bottom:16px;}
+.where{font-size:12px;color:var(--brand);letter-spacing:2px;margin-bottom:10px;}
+.story{font-size:14.5px;line-height:1.95;color:var(--ink);margin:0;}
+#opts{display:flex;flex-direction:column;gap:10px;}
+.opt{width:100%;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:2px;padding:14px 16px;font-size:14px;line-height:1.7;text-align:left;cursor:pointer;font-family:inherit;}
+.opt:active{background:#2a2d31;border-color:var(--gold);}
+.end{text-align:center;}
+.endline{height:1px;background:var(--line);margin-bottom:20px;}
+.tag{font-size:12px;color:var(--muted);letter-spacing:6px;}
+.big{font-size:26px;letter-spacing:6px;margin:10px 0 16px;font-weight:700;color:var(--gold);}
+.end.die .big{color:var(--brand);}
+.reason{font-size:14px;background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--brand);border-radius:2px;padding:16px;text-align:left;margin:0 0 16px;line-height:1.95;color:var(--ink);}
+.end .share{font-size:12px;color:var(--muted);margin-bottom:18px;line-height:1.7;}
+.again{width:100%;border:1px solid var(--gold);background:transparent;color:var(--gold);border-radius:2px;padding:12px;font-size:14px;letter-spacing:3px;cursor:pointer;margin-bottom:10px;}
+.again:active{background:#2a2620;}
+.rech{width:100%;border:1px solid #4C544D;background:transparent;color:#B9AC94;border-radius:2px;padding:11px;font-size:13px;letter-spacing:2px;cursor:pointer;}
+.rech:active{background:#2a2d31;}
+.toast{position:fixed;top:14%;left:50%;transform:translateX(-50%);background:var(--paper);border:1px solid var(--brand);color:#E9DFCB;padding:8px 22px;border-radius:2px;letter-spacing:4px;font-size:13px;z-index:99;pointer-events:none;opacity:0;animation:tst 1.9s ease forwards;}
+@keyframes tst{0%{opacity:0;transform:translate(-50%,-8px);}15%{opacity:1;transform:translate(-50%,0);}80%{opacity:1;transform:translate(-50%,0);}100%{opacity:0;transform:translate(-50%,0);}}
+.foot{margin-top:auto;padding:18px 0 max(18px,env(safe-area-inset-bottom));font-size:10px;color:#6E756C;text-align:center;letter-spacing:.5px;}
+.hide{display:none;}
+</style>
+</head>
+<body>
+<div class="wrap" id="wrap">
+  <header class="top">
+    <div class="brand"><span class="sealbox">科</span><span class="name">科举仕途</span></div>
+    <div class="meta"><span class="ep" id="ep">第 0 步</span></div>
+  </header>
+  <div class="hr"></div>
+  <div class="prog"><div class="bar"><i id="bar"></i></div><div class="dots" id="dots"></div></div>
+
+  <section id="cover" class="cover">
+    <div class="wm">科</div>
+    <div class="seal">科 举 · 仕 途</div>
+    <h1>科举仕途</h1>
+    <div class="lead">一笔一命运，一策一终身。<br>四十九幕，幕幕皆局；<br>从寒门书生到天子门生，每条路通向不同的功名。</div>
+    <div class="rulebox">📜 你是进京赴考的寒门举子。故事分四卷：<b>赴考启程 · 贡院风云 · 放榜前后 · 殿试终局</b>。每个选择都会<b>岔路</b>——有的通向不同结局，有的当场殒命。共 13 种结局。含「重新开局」与「从本卷重来」。</div>
+    <button class="start" id="startBtn">入 局</button>
+  </section>
+
+  <section id="chapter" class="hide chapter">
+    <div class="frame">
+      <div class="vol" id="cVol"></div><h2 id="cTitle"></h2>
+      <p class="ci" id="cIntro"></p><button class="go" id="cGo">续 卷</button>
+    </div>
+  </section>
+
+  <section id="scene" class="hide">
+    <div class="card"><div class="where" id="where"></div><p class="story" id="story"></p></div>
+    <div id="opts"></div>
+  </section>
+
+  <section id="end" class="hide end">
+    <div class="endline"></div>
+    <span class="tag" id="endTag"></span><div class="big" id="endBig"></div>
+    <div class="reason" id="endReason"></div><div class="share" id="endShare"></div>
+    <button class="again" id="againBtn">↻ 重新开局</button>
+    <button class="rech" id="rechBtn">从本卷重来</button>
+  </section>
+
+  <div class="foot">本作纯属虚构的娱乐向趣味测评，情节均非史实，不构成任何预言或建议。</div>
+</div>
+
+<script>
+const $=s=>document.getElementById(s);
+const SAVE_KEY="keju_save_v1";
+let step=0,prevV=0,volStart="n1",volStep=1,pending="";
+
+const VOLS=[null,
+ ["卷 一","赴 考 启 程","你是个寒门书生，背着家中仅剩的盘缠离了乡。三千里赴京路，从童试到会试，每一步都可能踩空。这一局，从你走出县城的那天开始。"],
+ ["卷 二","贡 院 风 云","号舍矮窄，烛火摇曳。封卷、点名、邻号、舞弊——贡院里规矩比文章要命。你要在七十尺号板之间，把这场考试活下来。"],
+ ["卷 三","放 榜 前 后","榜未出，案先起。科场舞弊大案牵连一片，有人攀咬你与权贵门生有「关节」。你要在众口铄金里，把自己洗清。"],
+ ["卷 四","殿 试 终 局","你过了复试，站到了天子脚下。策问、读卷、廷议、传胪——最后这几步，定的是你一生的去向。是状元，还是贬谪。"]
+];
+
+const NODES={
+ // ===== 卷一 赴考启程（n1–n12）=====
+ n1:{v:1,where:"晨 · 寒舍 · 启程",story:"你攥着家中仅剩的盘缠出了县城。赴京三千里，盘缠将尽时，路该怎么走？",
+  o:[{t:"沿途设帐授徒、为人代书，慢慢凑路费",go:"n2"},{t:"借放印子钱的高利贷，图个痛快启程",end:"E_LIUFANG"},{t:"把祖田贱卖给牙行，换足盘缠",end:"E_TUOMING"}]},
+ n2:{v:1,where:"昼 · 驿路 · 同乡",story:"路上遇同乡举子陆怀玉，邀你结伴，说他「门路广，场内好说话」。",
+  o:[{t:"只结伴赶路，各考各的",go:"n3"},{t:"把盘缠托他「打点关节」",end:"E_XIAYU"},{t:"听他怂恿换考「捷径籍贯」",end:"E_TUOMING"}]},
+ n3:{v:1,where:"夜 · 客栈 · 魁星",story:"客栈里一算命先生塞给你一道「魁星符」，说佩之必中，索价不菲。",
+  o:[{t:"谢过收下当个念想，不较真",go:"n4"},{t:"花重金请他「做法改运」",end:"E_SHENWANG"},{t:"信他「捐监」的鬼话，丢了童生资格",end:"E_TUOMING"}]},
+ n4:{v:1,where:"昼 · 贡院外 · 查籍",story:"入场前考官核籍贯。你本徽州籍，却有人提示「换顺天籍中榜易」。",
+  o:[{t:"老老实实报本籍",go:"n5"},{t:"换了顺天籍，赌一把",end:"E_TUOMING"},{t:"托人「疏通」籍贯",end:"E_XIAYU"}]},
+ n5:{v:1,where:"昼 · 贡院 · 抽号",story:"抽签得号舍。你抽到「天字十七号」，僻远潮湿。",
+  o:[{t:"认了，提前去号舍铺排",go:"n6"},{t:"与人换到靠近火巷的号",end:"E_SHENWANG"},{t:"托人「调好号」，被人卖了差价",end:"E_BEIJIAN"}]},
+ n6:{v:1,where:"夜 · 号舍 · 邻号",story:"邻号书生裴昭热情攀谈，说「场内多个朋友多条路」。",
+  o:[{t:"客气应着，不多言自身底细",go:"n7"},{t:"把家底全抖给他",end:"E_XIAYU"},{t:"信他「共用烛火」的由头，卷进他的事",end:"E_SHENWANG"}]},
+ n7:{v:1,where:"夜 · 号舍 · 封卷",story:"封卷前夜，号舍门须半掩不可全关——这是贡院第一条死规矩。",
+  o:[{t:"留门缝，和衣而卧",go:"n8"},{t:"嫌冷把门全关",end:"E_SHENWANG"},{t:"门户大开酣睡，丢了随身答卷",end:"E_BINGGU"}]},
+ n8:{v:1,where:"夜 · 号舍 · 烛火",story:"号舍烛火不可全灭，亦不可移到门外。",
+  o:[{t:"留一盏在内，按时添油",go:"n9"},{t:"烛火移到门外被风灭，号舍漆黑",end:"E_SHENWANG"},{t:"烛火引燃号帘",end:"E_BINGGU"}]},
+ n9:{v:1,where:"夜半 · 号舍 · 点名",story:"更夫挨号点名，答应的腔调要对。",
+  o:[{t:"应一声「在」，腔调平稳",go:"n10"},{t:"不应声装睡",end:"E_SHENWANG"},{t:"多应了一句攀谈",end:"E_XIAYU"}]},
+ n10:{v:1,where:"夜 · 号舍 · 翻卷",story:"隔壁号舍传来翻卷声，像是有人提前写完了在涂改。",
+  o:[{t:"捂耳不闻，专注自己的卷",go:"n11"},{t:"探头去看邻卷",end:"E_SHENWANG"},{t:"学他也涂改，卷面污损",end:"E_XIAYU"}]},
+ n11:{v:1,where:"昼 · 号舍 · 纸条",story:"有人从墙缝塞进一张纸条，写着「第三题答案，银五十两」。",
+  o:[{t:"原样退还，当没看见",go:"n12"},{t:"收下纸条",end:"E_TUOMING"},{t:"回条讨价，留下笔迹把柄",end:"E_XIAYU"}]},
+ n12:{v:1,where:"昼 · 号舍 · 笔",story:"你下笔答卷，用的是祖父留下的紫毫。笔尖忽秃了一截。",
+  o:[{t:"换自己的备用笔，照常写",go:"n13"},{t:"硬用秃笔，字迹潦草",end:"E_BINGGU"},{t:"借邻号裴昭的笔，卷面留了他的暗记",end:"E_SHENWANG"}]},
+
+ // ===== 卷二 贡院风云（n13–n26）=====
+ n13:{v:2,where:"昼 · 誊录所 · 弥封",story:"卷子送誊录所，姓名被弥封。誊录生问你「可要快些？」",
+  o:[{t:"按规程等，不催",go:"n14"},{t:"塞银子求快",end:"E_XIAYU"},{t:"催得紧，誊录出错漏了半句",end:"E_SHENWANG"}]},
+ n14:{v:2,where:"昼 · 贡院 · 巡场",story:"同考官巡场，停在你号前看了许久。",
+  o:[{t:"垂眸不应，任他看",go:"n15"},{t:"起身行礼攀谈",end:"E_XIAYU"},{t:"慌乱藏东西，反惹注目",end:"E_SHENWANG"}]},
+ n15:{v:2,where:"昼 · 号舍 · 裴昭",story:"邻号裴昭「急病」，求你递张纸出号叫人。",
+  o:[{t:"按铃叫监场，不私递",go:"n16"},{t:"私递出门",end:"E_SHENWANG"},{t:"探身去看他，越界被罚",end:"E_XIAYU"}]},
+ n16:{v:2,where:"昼 · 号舍 · 饮食",story:"有人「好心」递来一壶茶。你想起进场前母亲说「莫接陌生人饮食」。",
+  o:[{t:"谢绝，喝自己的水",go:"n17"},{t:"喝了，肚痛误了答卷",end:"E_BINGGU"},{t:"收下转赠他人，被人下套",end:"E_SHENWANG"}]},
+ n17:{v:2,where:"夜 · 号舍 · 鬼叩",story:"半夜号板轻响，像有人叩门。传闻贡院冤魂多。",
+  o:[{t:"蒙头稳睡，不为所动",go:"n18"},{t:"开门查看",end:"E_SHENWANG"},{t:"惊吓得夜不能寐",end:"E_BINGGU"}]},
+ n18:{v:2,where:"昼 · 号舍 · 草稿",story:"草稿纸按规定不可带出号舍。",
+  o:[{t:"留在号内，交卷时一并处理",go:"n19"},{t:"藏草稿出号",end:"E_TUOMING"},{t:"撕碎带出，碎屑落地被认出",end:"E_XIAYU"}]},
+ n19:{v:2,where:"昼 · 号舍 · 房师",story:"同考官（房师）对你卷子青眼，派人传话「可来一叙」。",
+  o:[{t:"场后再拜，场内不见",go:"n20"},{t:"场内私见",end:"E_XIAYU"},{t:"托人回话傲慢，得罪房师",end:"E_SHENWANG"}]},
+ n20:{v:2,where:"昼 · 誊录 · 笔误",story:"誊录生把你一句诗誊错了字。",
+  o:[{t:"场后依规申请勘误",go:"n21"},{t:"当场喧闹",end:"E_SHENWANG"},{t:"将就了，卷面留错",end:"E_BINGGU"}]},
+ n21:{v:2,where:"昼 · 贡院 · 出身",story:"有人认出你「寒门」，在场中散你「出身微贱不配科名」的闲话。",
+  o:[{t:"不理会，凭卷说话",go:"n22"},{t:"与人争口舌，坏了名声",end:"E_XIAYU"},{t:"托人压传闻，反被拿住把柄",end:"E_SHENWANG"}]},
+ n22:{v:2,where:"夜 · 号舍 · 疫",story:"号舍传有「时疫」，人心惶惶。",
+  o:[{t:"照常防护，不信谣",go:"n23"},{t:"慌乱求神拜鬼，误食香灰",end:"E_BINGGU"},{t:"硬闯出号求医",end:"E_SHENWANG"}]},
+ n23:{v:2,where:"昼 · 号舍 · 杂役",story:"一杂役说能替你「递家书」，收了钱。",
+  o:[{t:"不托陌生人，自己记挂",go:"n24"},{t:"托了，家书被拆看泄底",end:"E_XIAYU"},{t:"给了银钱不留据，人财两空",end:"E_BEIJIAN"}]},
+ n24:{v:2,where:"昼 · 交卷 · 墨污",story:"交卷时一滴墨溅上卷面。",
+  o:[{t:"如实报监场，请另纸誊清",go:"n25"},{t:"偷偷遮掩",end:"E_SHENWANG"},{t:"用唾沫去擦，晕开更大",end:"E_BINGGU"}]},
+ n25:{v:2,where:"昼 · 出场 · 搜检",story:"出场要经搜检门，防夹带。",
+  o:[{t:"坦然受检，配合",go:"n26"},{t:"怀里揣了人塞的「锦囊」",end:"E_TUOMING"},{t:"与检役争执",end:"E_XIAYU"}]},
+ n26:{v:2,where:"昼 · 贡院外 · 失物",story:"出场发现祖传紫毫不见了，有人说是裴昭拿的。",
+  o:[{t:"先不声张，等放榜后再究",go:"n27"},{t:"当场扭住裴昭",end:"E_XIAYU"},{t:"信了流言四处寻笔，误了候榜",end:"E_SHENWANG"}]},
+
+ // ===== 卷三 放榜前后（n27–n38）=====
+ n27:{v:3,where:"昼 · 客栈 · 候榜",story:"放榜前半月，你住客栈死等。",
+  o:[{t:"安心温书，等榜",go:"n28"},{t:"焦虑成疾，卧病",end:"E_BINGGU"},{t:"去赌坊押自己中榜，散尽盘缠",end:"E_XIAYU"}]},
+ n28:{v:3,where:"夜 · 客栈 · 梦",story:"榜前夜，梦见自己榜上有名又骤然划去。",
+  o:[{t:"梦醒不理，照常",go:"n29"},{t:"信梦去「改命」",end:"E_SHENWANG"},{t:"吓得一宿不眠，失魂",end:"E_BINGGU"}]},
+ n29:{v:3,where:"昼 · 榜下 · 同年",story:"同年举子约你一同去看榜。",
+  o:[{t:"约好同去，不抢先",go:"n30"},{t:"抢先独自去看",end:"E_XIAYU"},{t:"托人代看，消息误传",end:"E_SHENWANG"}]},
+ n30:{v:3,where:"昼 · 榜下 · 复核",story:"榜上未见你名。有人怂恿「花钱复核，必有隐情」。",
+  o:[{t:"冷静自去礼部查原卷",go:"n31"},{t:"花银复核",end:"E_XIAYU"},{t:"大闹榜下",end:"E_SHENWANG"}]},
+ n31:{v:3,where:"昼 · 客栈 · 喜讯",story:"原卷无误，你中了！同年来贺。",
+  o:[{t:"稳住心神，谢同年",go:"n32"},{t:"张扬设宴，树大招风",end:"E_XIAYU"},{t:"醉酒失言，得罪座师",end:"E_SHENWANG"}]},
+ n32:{v:3,where:"昼 · 座师宅 · 门生礼",story:"中试后要拜座师（阅卷房师），礼数有讲究。",
+  o:[{t:"循例持贽见礼，恭敬不谄",go:"n33"},{t:"送礼过厚",end:"E_XIAYU"},{t:"托人代拜，失了礼数",end:"E_SHENWANG"}]},
+ n33:{v:3,where:"昼 · 同年宴 · 倾轧",story:"同年宴上，有人赞你「寒门奇才」，有人冷笑。",
+  o:[{t:"谦退，不接话头",go:"n34"},{t:"得意接话，树敌",end:"E_XIAYU"},{t:"替人出头，卷进派系",end:"E_SHENWANG"}]},
+ n34:{v:3,where:"夜 · 客栈 · 调包",story:"你翻出随身底稿，发现有一页笔迹不像自己——卷子疑被调包。",
+  o:[{t:"悄悄留证，不声张",go:"n35"},{t:"当众揭发",end:"E_SHENWANG"},{t:"私下找人「摆平」",end:"E_XIAYU"}]},
+ n35:{v:3,where:"昼 · 京城 · 舞弊案",story:"科场舞弊大案爆发，考官下狱，牵连一片。",
+  o:[{t:"避嫌不出，静观",go:"n36"},{t:"去「打探内情」",end:"E_XIAYU"},{t:"替人递话，成同党",end:"E_SHENWANG"}]},
+ n36:{v:3,where:"昼 · 客栈 · 攀咬",story:"案中有人为脱罪，攀咬你「曾收裴昭关节」。",
+  o:[{t:"据实自辩，呈底稿为证",go:"n37"},{t:"花钱消灾",end:"E_XIAYU"},{t:"畏罪潜逃，罪加一等",end:"E_SHENWANG"}]},
+ n37:{v:3,where:"昼 · 刑部 · 传讯",story:"你被传讯。堂上问你与裴昭往来。",
+  o:[{t:"如实陈述，不掩不饰",go:"n38"},{t:"遮掩一二，露出破绽",end:"E_XIAYU"},{t:"慌乱攀扯他人，反噬",end:"E_SHENWANG"}]},
+ n38:{v:3,where:"昼 · 公堂 · 对质",story:"公堂对质，裴昭当庭递来那支祖传紫毫——他确曾偷换你笔。",
+  o:[{t:"以笔为证，洗清自身",go:"n39"},{t:"怒而夺笔失仪",end:"E_SHENWANG"},{t:"与裴昭当庭和解私了",end:"E_XIAYU"}]},
+
+ // ===== 卷四 殿试终局（n39–n49）=====
+ n39:{v:4,where:"昼 · 礼部 · 殿试资格",story:"你过复试，得入殿试。",
+  o:[{t:"谨守规矩，候殿",go:"n40"},{t:"殿前失仪小过",end:"E_BINGGU"},{t:"托人「运作」资格",end:"E_SHENWANG"}]},
+ n40:{v:4,where:"昼 · 殿 · 策问",story:"天子亲策，问「足兵足食」。你提笔。",
+  o:[{t:"依经义从容对",go:"n41"},{t:"炫博引僻典",end:"E_XIAYU"},{t:"抄录成句",end:"E_SHENWANG"}]},
+ n41:{v:4,where:"昼 · 殿 · 锋芒",story:"策论写至中途，你本能淋漓，却想起「过刚易折」。",
+  o:[{t:"锋芒收三分，持重收尾",go:"n42"},{t:"尽吐激愤，触怒读卷官",end:"E_YINJU"},{t:"写至力竭昏厥",end:"E_BINGGU"}]},
+ n42:{v:4,where:"昼 · 读卷官 · 印象",story:"读卷官阅你卷，微微颔首，却也有人摇头。",
+  o:[{t:"不骄不馁，静候",go:"n43"},{t:"托人打探读卷官好恶",end:"E_XIAYU"},{t:"递「谢忱」被拒，反成话柄",end:"E_SHENWANG"}]},
+ n43:{v:4,where:"昼 · 殿 · 天子亲策",story:"天子就你策论追问一句，目光如炬。",
+  o:[{t:"躬身谨对，不卑不亢",go:"n44"},{t:"对答佞巧，天子不悦",end:"E_YINJU"},{t:"紧张失语，错漏百出",end:"E_SHENWANG"}]},
+ n44:{v:4,where:"昼 · 朝 · 权臣",story:"权臣遣人邀你「日后多亲近」。",
+  o:[{t:"婉拒，不结党",go:"n45"},{t:"依附权臣",end:"E_YINJU"},{t:"断然回绝太绝，被穿小鞋",end:"E_XIAYU"}]},
+ n45:{v:4,where:"昼 · 朝 · 站队",story:"廷议上，众人看你站哪边。",
+  o:[{t:"依理发言，不预党争",go:"n46"},{t:"站错队，风头一过被清算",end:"E_YINJU"},{t:"骑墙两头，都不讨好",end:"E_XIAYU"}]},
+ n46:{v:4,where:"昼 · 谢恩 · 分寸",story:"传胪前要到阙门谢恩，分寸极要紧。",
+  o:[{t:"依礼谢恩，不逾矩",go:"n47"},{t:"谢恩词过谦，被疑「怨望」",end:"E_SHENWANG"},{t:"谢恩越制",end:"E_XIAYU"}]},
+ n47:{v:4,where:"昼 · 传胪 · 大典",story:"传胪大典，唱名在即。",
+  o:[{t:"肃立听唱，心神凝定",go:"n48"},{t:"紧张昏眩，错过唱名",end:"E_BINGGU"},{t:"东张西望失仪",end:"E_SHENWANG"}]},
+ n48:{v:4,where:"昼 · 授官 · 抉择",story:"你被拟授官职，可选「清要」或「肥缺」。",
+  o:[{t:"请授清要闲职，稳进",go:"n49"},{t:"争肥缺，被疑贪",end:"E_XIAYU"},{t:"推辞太过，被认「矫情」",end:"E_SHENWANG"}]},
+ n49:{v:4,where:"殿 · 金 榜",story:"传胪唱名，你站在丹墀之下。这一生的去向，系于你此刻的姿态。",
+  o:[{t:"谦退谨守，殿试后持重自处",end:"E_ZHUANGYUAN"},{t:"才高外露，对策惊四座",end:"E_HANLIN"},{t:"与同年妹情投，结良缘",end:"E_LIANGYUAN"},{t:"看破宦海，乞归养亲",end:"E_GUIYIN"},{t:"授一偏远官职，安稳度日",end:"E_PINGDAN"},{t:"暗中翻案，更名另谋出路",end:"E_FAN"},{t:"攀附权臣，谋速进",end:"E_YINJU"}]}
+};
+
+const END={
+ "E_ZHUANGYUAN":{type:"life",title:"状 元 及 第",text:"你中了状元。胪唱声中，你叩首谢恩，朱衣乌帽，少年成名。寒门出了个状元郎，京中传为一时佳话。你把这辈子的路，从县城一步步走成了金阶。全剧终。"},
+ "E_HANLIN":{type:"life",title:"翰 林 清 贵",text:"你入翰林，执笔翰苑，虽非状元，亦是清流。文章千古事，你以笔墨立身，日后或能入阁。这一局，你赢在了分寸。全剧终。"},
+ "E_LIANGYUAN":{type:"life",title:"良 缘",text:"你与同年妹情投意合，结为良配。不必再孤身赴宦海，灯火可亲，有人候门。你选了另一条路，也走成了自己的圆满。全剧终。"},
+ "E_GUIYIN":{type:"life",title:"归 隐",text:"你看破了宦海风波，乞归养亲。江南小院，竹影扫阶，再不闻廷议党争。这一世，你替自己活了一场。全剧终。"},
+ "E_PINGDAN":{type:"life",title:"平 淡 仕 途",text:"你授了清要之职，不显山不露水，安稳做了一辈子太平官。无功无过，却也无惊无险。这便是大多数人的全剧终。"},
+ "E_LIUFANG":{type:"die",title:"流 放",text:"印子钱的利滚起来比官债还狠。你还没到京城，债主已先到了。盘缠被夺，你以「欠帑」获罪，发配边荒。你倒在了第 __N__ 步。"},
+ "E_TUOMING":{type:"die",title:"革 除 功 名",text:"你走了一条取巧的路，终被识破。功名革去，身败名裂，连寒门那点清白也一并赔了进去。你倒在了第 __N__ 步。"},
+ "E_XIAYU":{type:"die",title:"下 狱",text:"你想走捷径，却走入了局。锒铛入狱，同僚避之不及，案牍上的墨迹比你的辩解更有力。你倒在了第 __N__ 步。"},
+ "E_SHENWANG":{type:"die",title:"沉 冤",text:"你本无罪，却一步步踩进了别人设好的死局。辩无可辩，沉冤莫白，贡院的灯照不亮你脚下的路。你倒在了第 __N__ 步。"},
+ "E_BINGGU":{type:"die",title:"病 故",text:"你终究没能撑住。心力交瘁，一病不起，药石无灵。科场未负你，是你先负了这身骨血。你倒在了第 __N__ 步。"},
+ "E_BEIJIAN":{type:"die",title:"被 欺 诓",text:"你信了不该信的人，银钱与名节一并落空。等发觉时，人已远走，话已传开，再无人听你分说。你倒在了第 __N__ 步。"},
+ "E_YINJU":{type:"die",title:"贬 谪 收 场",text:"你押错了注，或露了狂态。风头一过，清算先至。从云端到边州，不过一道旨意。你倒在了第 __N__ 步。"},
+ "E_FAN":{type:"life",title:"翻 案 另 谋",text:"你暗中翻出当年调包的真凭，更名改姓，远走他乡另谋出路。功名没了，人还在。这一局，你替自己留了最后一条退路。全剧终。"}
+};
+
+const DTH={
+ "n1:1":"印子钱的利滚起来比官债还狠。你还没到京城，债主已先到了。你倒在了第 __N__ 步。",
+ "n1:2":"你卖掉了祖田，断了归途。考场上心神不宁，落第后无家可归。你倒在了第 __N__ 步。",
+ "n2:1":"盘缠托出去便如泥牛入海。陆怀玉「门路」没给你打开，倒先关上了你回家的门。你倒在了第 __N__ 步。",
+ "n2:2":"你改了籍贯，像换了皮的狸。进场时一经核对，冒籍事发，当场逐出。你倒在了第 __N__ 步。",
+ "n3:1":"你把所有盘缠都给了算命先生。魁星没来，债主来了，你连进场的气力都没攒下。你倒在了第 __N__ 步。",
+ "n3:2":"捐监的文书是假的。你递上去的刹那，童生资格已被黜落，连考棚的门都没摸着。你倒在了第 __N__ 步。",
+ "n4:1":"顺天籍是旁人挖的坑。点名时户籍对不上，你被当做枪手拿下。你倒在了第 __N__ 步。",
+ "n4:2":"「疏通」籍贯的银子打了水漂，还留了案底在礼部。你倒在了第 __N__ 步。",
+ "n5:1":"你换到的火巷号紧邻灶房，半夜走水。你随号板一齐慌乱奔走，卷子毁于火。你倒在了第 __N__ 步。",
+ "n5:2":"托人调号，差价进了别人腰包，你反倒落了「钻营」的埋怨。你倒在了第 __N__ 步。",
+ "n6:1":"你把家底抖给裴昭，等于把绳子递到他手里。后来他轻轻一拽，你便缚住了自己。你倒在了第 __N__ 步。",
+ "n6:2":"你信了「共用烛火」的由头，夜里他的卷与你纠缠不清，考场视作传递。你倒在了第 __N__ 步。",
+ "n7:1":"门全关上，更夫记你「形迹可疑」。封卷夜的一时贪暖，换了一卷不录。你倒在了第 __N__ 步。",
+ "n7:2":"门大敞着，你睡死过去。天亮发现答卷不翼而飞，号舍空留一身冷。你倒在了第 __N__ 步。",
+ "n8:1":"烛火移出门外被夜风吹灭，号舍漆黑如墨。监场判你「弃考」，卷子未写先废。你倒在了第 __N__ 步。",
+ "n8:2":"烛火舔上号帘，火苗窜起。你扑救不及，号舍一片狼藉，名姓登记在案。你倒在了第 __N__ 步。",
+ "n9:1":"你装睡不应，更夫在点名册上画了叉。逃逸之名坐实，你连辩白的机会都没了。你倒在了第 __N__ 步。",
+ "n9:2":"你多应了一句攀谈，被疑「隔号传递」。一声多余的话，断了一卷前程。你倒在了第 __N__ 步。",
+ "n10:1":"你探头去看邻卷，巡场正巧经过。窥探邻卷，罪同抄袭，当场收卷。你倒在了第 __N__ 步。",
+ "n10:2":"你学邻号涂改，卷面墨迹斑驳。誊录所见，疑为夹带暗记，作废。你倒在了第 __N__ 步。",
+ "n11:1":"你伸手接了纸条，埋伏的监场当场现身。五十两买来的不是答案，是枷锁。你倒在了第 __N__ 步。",
+ "n11:2":"你回条讨价，留下了笔迹。那张纸后来成了攀咬你的证物。你倒在了第 __N__ 步。",
+ "n12:1":"你硬用秃笔，字迹潦草如蚓。读卷官一目十行，判「潦草不录」。你倒在了第 __N__ 步。",
+ "n12:2":"你借了裴昭的笔，卷面悄悄多了一道他的暗记。后来对质，百口莫辩。你倒在了第 __N__ 步。",
+ "n13:1":"你塞了银子求快，誊录生顺手做了手脚。你的卷子到了房师案上，已不是你的文章。你倒在了第 __N__ 步。",
+ "n13:2":"你催得紧，誊录生手一抖漏了半句。你的策论缺了尾，文气断在半途。你倒在了第 __N__ 步。",
+ "n14:1":"你起身行礼攀谈，落在考官眼里便是「结识考官」的嫌疑。瓜田李下，你倒在了第 __N__ 步。",
+ "n14:2":"你慌乱去藏东西，反倒把动静闹大。考官驻足，把你记进了簿子。你倒在了第 __N__ 步。",
+ "n15:1":"你私递出门，被巡场抓个正着。传递之罪，邻号裴昭脱身，你顶了罪。你倒在了第 __N__ 步。",
+ "n15:2":"你探身去看裴昭，半个身子越了号界。监场以「越号」罚你，卷子一并收走。你倒在了第 __N__ 步。",
+ "n16:1":"那壶茶里有人下了作料。你肚痛难忍，伏在号板上错过了答卷时辰。你倒在了第 __N__ 步。",
+ "n16:2":"你收下转赠他人，不料被人做了套。茶壶到你手里，便成了你「私相授受」的证。你倒在了第 __N__ 步。",
+ "n17:1":"你开门查看，被巡场当「夜出号舍」。贡院的门，开不得。你倒在了第 __N__ 步。",
+ "n17:2":"你吓得整宿不合眼，次日头昏沉。对策写满纸昏话，读卷官摇头。你倒在了第 __N__ 步。",
+ "n18:1":"你藏草稿出号，搜检门一查便着。夹带之罪，十年寒窗付诸东流。你倒在了第 __N__ 步。",
+ "n18:2":"你撕碎带出，碎屑偏落在阶上。检役俯身一看，认出是你的笔迹。你倒在了第 __N__ 步。",
+ "n19:1":"你场内私见房师，落了「关节」的口实。同考人人喊打，你百口莫辩。你倒在了第 __N__ 步。",
+ "n19:2":"你托人回话，辞色傲慢。房师拂袖，你的卷子再没进他青眼。你倒在了第 __N__ 步。",
+ "n20:1":"你当场喧闹，被逐出誊录所。错字未勘，卷子先废。你倒在了第 __N__ 步。",
+ "n20:2":"你将就了那处错字，卷面留痕。房师读来拗口，你的名次便也低了下去。你倒在了第 __N__ 步。",
+ "n21:1":"你与人争口舌，名声先臭了。座师听不得「寒门闹事」，你的卷子被轻轻放下。你倒在了第 __N__ 步。",
+ "n21:2":"你托人压传闻，反被拿住把柄。压下去的是闲话，浮起来的是你的案。你倒在了第 __N__ 步。",
+ "n22:1":"你慌乱求神拜鬼，误食香灰。号舍里你上吐下泻，答卷无人替你写。你倒在了第 __N__ 步。",
+ "n22:2":"你硬闯出号求医，被当逃考。贡院的规矩，出号便不再放你回来。你倒在了第 __N__ 步。",
+ "n23:1":"你托杂役递家书，信被拆看。家底与人情一并泄尽，成了旁人拿捏你的凭。你倒在了第 __N__ 步。",
+ "n23:2":"你给了银钱却不留字据，人财两空。杂役一去不回，你连告状的凭据都没有。你倒在了第 __N__ 步。",
+ "n24:1":"你偷偷遮掩墨污，被查出「涂抹卷面」。贡院最忌涂改，你的卷子当场黜落。你倒在了第 __N__ 步。",
+ "n24:2":"你用唾沫去擦，墨晕开更大。原本一滴，成了满纸乌云。你倒在了第 __N__ 步。",
+ "n25:1":"你怀里揣了人塞的锦囊，搜检门一摸便着。里头是夹带，你百口莫辩。你倒在了第 __N__ 步。",
+ "n25:2":"你与检役争执，被扣下盘问。时辰就这样耗尽，你误了出场之限。你倒在了第 __N__ 步。",
+ "n26:1":"你当场扭住裴昭，反被他咬你「场内勾结」。二人拉扯到公堂，各打五十，你先输了名节。你倒在了第 __N__ 步。",
+ "n26:2":"你信了流言四处寻笔，把候榜的时辰全耗在坊间。等回神，放榜早过。你倒在了第 __N__ 步。",
+ "n27:1":"焦虑成疾，你卧病客栈。榜出那日你昏睡着，错过了属于自己的名字。你倒在了第 __N__ 步。",
+ "n27:2":"你去赌坊押自己中榜，盘缠散尽。榜上真有了你，你却连赴鹿鸣宴的衣裳都当了。你倒在了第 __N__ 步。",
+ "n28:1":"你信了梦去「改命」，被人诓去「禳解」的银子。梦没改，运先空。你倒在了第 __N__ 步。",
+ "n28:2":"你吓得一宿不眠，失魂落魄。放榜时你浑浑噩噩，连自己中没中都答不出。你倒在了第 __N__ 步。",
+ "n29:1":"你抢先独自去看榜，正撞上舞弊案的风口。人群里你被误认作涉案之人，卷了进去。你倒在了第 __N__ 步。",
+ "n29:2":"你托人代看，消息误传「落第」。你信以为真，收拾行囊南归，错过了复核的时辰。你倒在了第 __N__ 步。",
+ "n30:1":"你花银复核，卷子却被经手人调包，坐实了落第。想翻案时，银子与人都不见了。你倒在了第 __N__ 步。",
+ "n30:2":"你大闹榜下，被衙役拿问。礼部门前，斯文扫地的不是榜单，是你自己。你倒在了第 __N__ 步。",
+ "n31:1":"你张扬设宴，树大招风。座师听了不悦，同年侧目，暗处的眼已盯上了你。你倒在了第 __N__ 步。",
+ "n31:2":"你醉酒失言，把座师的家底当笑谈讲了出去。次日，座师便与你划了清界限。你倒在了第 __N__ 步。",
+ "n32:1":"你送礼过厚，被疑「钻营」。座师原青眼，见了厚礼反倒生了嫌。你倒在了第 __N__ 步。",
+ "n32:2":"你托人代拜，礼数尽失。座师记你「倨傲」，门生录上你的名字淡了几分。你倒在了第 __N__ 步。",
+ "n33:1":"你得意接了那句夸，话头引来了冷笑的人。同年宴上你种了敌，日后一一还报。你倒在了第 __N__ 步。",
+ "n33:2":"你替人出头，卷进派系。寒门本无党，你偏去站了队，成了别人棋上的子。你倒在了第 __N__ 步。",
+ "n34:1":"你当众揭发调包，反被诬「讹诈」。没有凭据的指控，先脏了你自己。你倒在了第 __N__ 步。",
+ "n34:2":"你私下找人「摆平」，反被讹去一笔银子。事没平，账先空。你倒在了第 __N__ 步。",
+ "n35:1":"你去「打探内情」，正撞在办案的刀口上。想抽身时，已成了案中一环。你倒在了第 __N__ 步。",
+ "n35:2":"你替人递话，把自己递成了同党。案卷上你的名字，排在别人后头。你倒在了第 __N__ 步。",
+ "n36:1":"你花钱消灾，坐实了嫌疑。银子填进去，窟窿反倒更大。你倒在了第 __N__ 步。",
+ "n36:2":"你畏罪潜逃，罪加一等。逃得了一时，逃不脱海捕的文书。你倒在了第 __N__ 步。",
+ "n37:1":"你遮掩一二，话里露出破绽。堂上最忌支吾，你越描越黑。你倒在了第 __N__ 步。",
+ "n37:2":"你慌乱攀扯他人，反噬先至。被你咬的人脱了身，你替他扛了罪。你倒在了第 __N__ 步。",
+ "n38:1":"你怒而夺笔，失了公堂的仪。考官记你「狂悖」，洗清了冤，却污了名。你倒在了第 __N__ 步。",
+ "n38:2":"你与裴昭当庭和解私了，落了案底在刑部。功名虽保，清白已缺一角。你倒在了第 __N__ 步。",
+ "n39:1":"你殿前失了仪，小过累积成大过。复试的资格，一日之间便黜落。你倒在了第 __N__ 步。",
+ "n39:2":"你托人「运作」资格，话传进御史耳朵。资格没到手，案子先到了。你倒在了第 __N__ 步。",
+ "n40:1":"你炫博引僻典，读卷官皱眉，判「浮夸」。天子要的是经世之论，不是书袋。你倒在了第 __N__ 步。",
+ "n40:2":"你抄录成句，被识破套语。殿试最忌雷同，你的卷子被黜。你倒在了第 __N__ 步。",
+ "n41:1":"你尽吐激愤，笔锋太露。读卷官读出不驯，天子也觉刺眼。锋芒成了你的死处。你倒在了第 __N__ 步。",
+ "n41:2":"你写到力竭，伏案昏厥。卷面未竟，传胪无名。你倒在了第 __N__ 步。",
+ "n42:1":"你托人打探读卷官好恶，留下了痕迹。风声传到都察院，你先得了「揣摩上意」的名。你倒在了第 __N__ 步。",
+ "n42:2":"你递「谢忱」被拒，反成话柄。不送是清，送了是陋，你偏偏送在了刀口上。你倒在了第 __N__ 步。",
+ "n43:1":"你对答佞巧，天子不悦。龙颜一沉，你的卷子便沉了底。你倒在了第 __N__ 步。",
+ "n43:2":"你紧张失语，错漏百出。天子追问三句，你答不上半句。你倒在了第 __N__ 步。",
+ "n44:1":"你依附权臣，后来的清算先清算你。树倒猢狲散，你散得最早。你倒在了第 __N__ 步。",
+ "n44:2":"你回绝得太绝，权臣记了仇。明里不怪，暗里给你穿了小鞋。你倒在了第 __N__ 步。",
+ "n45:1":"你站错了队，风头一过便被清算。党争的刀，先落在外人头上。你倒在了第 __N__ 步。",
+ "n45:2":"你骑墙两头，都不讨好。两派都当你是墙头草，真到分派时谁也不要你。你倒在了第 __N__ 步。",
+ "n46:1":"你谢恩词过谦，被疑「怨望」。一句不妥的话，抵过十年苦读。你倒在了第 __N__ 步。",
+ "n46:2":"你谢恩越了制，被劾「僭越」。传胪未始，你先丢了仪。你倒在了第 __N__ 步。",
+ "n47:1":"你紧张昏眩，错过了唱名。丹墀之下，你的名字念过三遍，你都没应。你倒在了第 __N__ 步。",
+ "n47:2":"你东张西望失了仪，被记在册。传胪大典最重威仪，你缺了这份稳。你倒在了第 __N__ 步。",
+ "n48:1":"你争肥缺，被疑贪。授官的本意是任能，你先露了欲。你倒在了第 __N__ 步。",
+ "n48:2":"你推辞太过，被认「矫情」。清要之职本该你受，你偏推，反倒落了不恭。你倒在了第 __N__ 步。"
+};
+
+function save(st){try{st.step=step;st.prevV=prevV;st.volStart=volStart;st.volStep=volStep;st.pending=pending;localStorage.setItem(SAVE_KEY,JSON.stringify(st));}catch(e){}}
+function clearSave(){try{localStorage.removeItem(SAVE_KEY);}catch(e){}}
+function restore(){let s=null;try{s=JSON.parse(localStorage.getItem(SAVE_KEY));}catch(e){}
+ if(!s||s.screen==="cover")return;
+ step=s.step;prevV=s.prevV;volStart=s.volStart;volStep=s.volStep;pending=s.pending;
+ updateEp();renderDots();
+ if(s.screen==="scene")paintScene(s.node);
+ else if(s.screen==="chapter")showChapter(s.node);
+ else if(s.screen==="end")showEnd(s.endId,s.key);}
+function show(e){e.classList.remove("hide");} function hide(e){e.classList.add("hide");}
+function renderDots(){const d=$("dots");d.innerHTML="";VOLS.forEach((_,k)=>{if(k<1)return;const i=document.createElement("i");if(k<=prevV)i.className="on";d.appendChild(i);});}
+function updateEp(){const total=Object.keys(NODES).length;$("ep").textContent=`第 ${step} 步 / 共 ${total} 幕`;$("bar").style.width=(step/total*100)+"%";}
+function toast(msg){const t=document.createElement("div");t.className="toast";t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),1900);}
+function go(id){
+ const n=NODES[id];
+ if(n.v!==prevV){ prevV=n.v; volStart=id; volStep=step+1; pending=id; showChapter(id); return; }
+ step++; updateEp(); renderDots(); paintScene(id);
+}
+function showChapter(id){const n=NODES[id];const v=VOLS[n.v];
+ $("cVol").textContent=v[0];$("cTitle").textContent=v[1];$("cIntro").textContent=v[2];
+ hide(scene);hide(end);show(chapter);renderDots();save({screen:"chapter",node:id});}
+function paintScene(id){const n=NODES[id];
+ const v=VOLS[n.v];$("where").textContent=`${v[0]} · ${n.where}`;$("story").textContent=n.story;
+ const shuf=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+ const box=$("opts");box.innerHTML="";shuf(n.o.map((op,i)=>({op,i}))).forEach(({op,i})=>{const b=document.createElement("button");b.className="opt";b.textContent=op.t;
+   b.onclick=()=>op.end?showEnd(op.end,id+":"+i):go(op.go);box.appendChild(b);});
+ hide(chapter);hide(end);show(scene);window.scrollTo(0,0);
+ save({screen:"scene",node:id});}
+function showEnd(id,key){const e=END[id];const txt=((key&&DTH[key])||e.text).replace("__N__",step);
+ end.className="end "+e.type;$("endTag").textContent=e.type==="die"?"大 结 局":"结 局";
+ $("endBig").textContent=e.title;$("endReason").textContent=txt;
+ $("endShare").textContent=e.type==="die"?`📌 你只活到了第 ${step} 步…截个图，看看朋友能走几步～`:`📌 你走到了第 ${step} 步，结局「${e.title}」～截个图炫耀！`;
+ hide(scene);hide(chapter);show(end);window.scrollTo(0,0);save({screen:"end",endId:id,key:key});}
+$("startBtn").onclick=()=>{clearSave();step=0;prevV=0;volStart="n1";volStep=1;hide(cover);go("n1");};
+$("cGo").onclick=()=>{go(pending);};
+$("againBtn").onclick=()=>{clearSave();step=0;prevV=0;volStart="n1";volStep=1;hide(end);hide(chapter);show(cover);};
+$("rechBtn").onclick=()=>{step=volStep-1;go(volStart);};
+restore();
+</script>
+</body>
+</html>
