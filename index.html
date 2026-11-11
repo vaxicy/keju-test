@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>科举仕途测试</title>
-<meta property="og:title" content="科举仕途 · 从寒门书生到天子门生，49幕13结局">
+<meta property="og:title" content="科举仕途 · 从寒门书生到天子门生，50幕13结局">
 <style>
 :root{--bg:#16181a;--paper:#21242a;--ink:#E9E3D5;--brand:#B23A2E;--gold:#C8A96A;--line:#34383d;--muted:#8A8F88;}
 *{box-sizing:border-box;}
@@ -76,7 +76,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:"
     <div class="wm">科</div>
     <div class="seal">科 举 · 仕 途</div>
     <h1>科举仕途</h1>
-    <div class="lead">一笔一命运，一策一终身。<br>四十九幕，幕幕皆局；<br>从寒门书生到天子门生，每条路通向不同的功名。</div>
+    <div class="lead">一笔一命运，一策一终身。<br>五十幕，幕幕皆局；<br>从寒门书生到天子门生，每条路通向不同的功名。</div>
     <div class="rulebox">📜 你是进京赴考的寒门举子。故事分四卷：<b>赴考启程 · 贡院风云 · 放榜前后 · 殿试终局</b>。每个选择都会<b>岔路</b>——有的通向不同结局，有的当场殒命。共 13 种结局。含「重新开局」与「从本卷重来」。</div>
     <button class="start" id="startBtn">入 局</button>
   </section>
@@ -1017,7 +1017,7 @@ const NODES={
     "o": [
       {
         "t": "请授清要闲职，稳进",
-        "go": "n49"
+        "go": "n48b"
       },
       {
         "t": "争了那个肥缺，说该当",
@@ -1026,6 +1026,25 @@ const NODES={
       {
         "t": "推辞得过了，说不堪任",
         "end": "E_SHENWANG"
+      }
+    ]
+  },
+  "n48b": {
+    "v": 4,
+    "where": "殿 · 传胪前夜",
+    "story": "传胪前夜，你在朝房候榜。一位同年递来一封密信，说能为你美言于掌院学士。",
+    "o": [
+      {
+        "t": "原信退回，静坐候榜",
+        "go": "n49"
+      },
+      {
+        "t": "收下密信，夜半依约去见其人",
+        "end": "E_BEIJIAN"
+      },
+      {
+        "t": "当众撕信，斥来人是小人",
+        "end": "E_TUOMING"
       }
     ]
   },
@@ -1082,7 +1101,7 @@ const END={
  "E_FAN":{type:"life",title:"翻 案 另 谋",text:"你暗中翻出当年调包的真凭，更名改姓，远走他乡另谋出路。功名没了，人还在。这一局，你替自己留了最后一条退路。全剧终。"}
 };
 
-const DTH={
+const DTH={"n48b:1":"你收下那封密信，夜半依约去见其人。门后站的却是御史台的录事——你递出去的不是自辩，是一纸结党物证。你倒在了第 __N__ 步。","n48b:2":"你当众把信撕了，斥来人是小人，满朝房霎时静了下来。次日黄榜上你的名字仍在，功名却被寻了由头革去。你倒在了第 __N__ 步。",
  "n1:1":"印子钱的利滚起来比官债还狠。你还没到京城，债主已先到了。你倒在了第 __N__ 步。",
  "n1:2":"你卖掉了祖田，断了归途。考场上心神不宁，落第后无家可归。你倒在了第 __N__ 步。",
  "n2:1":"盘缠托出去便如泥牛入海。陆怀玉「门路」没给你打开，倒先关上了你回家的门。你倒在了第 __N__ 步。",
